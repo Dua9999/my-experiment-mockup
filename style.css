@@ -134,15 +134,6 @@ body {
     font-weight: bold;
 }
 
-.dropdown-select {
-    width: 100%;
-    padding: 9px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 11px;
-    background: #fff;
-}
-
 .cta-button {
     width: 100%;
     background: #111;
