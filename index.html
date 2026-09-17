@@ -3,55 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Product Page Mockup</title>
+    <title>Mobile Storefront Mockup</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="store-container">
-        <!-- Store Header -->
-        <header class="store-header">
-            <h1 class="logo" id="store-logo">K-RECORDS</h1>
-            <nav class="store-nav">
-                <a href="#">Home</a>
-                <a href="#" class="active">Product</a>
-                <a href="#">Contact</a>
-                <a href="#">About</a>
-            </nav>
-        </header>
+    <!-- Phone Frame Container -->
+    <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+            
+            <!-- Store Header -->
+            <header class="store-header">
+                <h1 class="logo" id="store-logo">K-RECORDS</h1>
+            </header>
 
-        <!-- Dynamic Framing / Progress Banner (Hidden in Control Mode) -->
-        <div class="debug-banner" id="framing-banner" style="display: none;">
-            <span id="banner-text"></span>
+            <!-- Dynamic Framing / Progress Banner (Hidden in Control Mode) -->
+            <div class="debug-banner" id="framing-banner" style="display: none;">
+                <span id="banner-text"></span>
+            </div>
+
+            <!-- Scrollable Mobile Content Area -->
+            <div class="scroll-content">
+                <!-- Product Artwork -->
+                <div class="product-image-container">
+                    <img id="product-artwork" src="" alt="Product Mockup" class="main-mockup-img">
+                </div>
+
+                <!-- Product Info & Purchase Panel -->
+                <div class="product-info-col">
+                    <h2 class="product-title" id="prod-title">Product Title</h2>
+                    <p class="product-subtitle" id="prod-subtitle">Product Subtitle</p>
+                    <div class="product-price" id="prod-price">€0.00</div>
+
+                    <!-- Dynamic Selector Group (Versions / Routine Status) -->
+                    <div class="selector-group" id="selector-container"></div>
+
+                    <!-- Interactive Accordion for Product Details / Tracklist -->
+                    <div class="details-accordion-container">
+                        <button id="accordion-toggle" class="accordion-btn">▼ View Product Details & Info</button>
+                        <div id="accordion-content" class="accordion-panel" style="display: none;">
+                            <p id="details-text">Loading details...</p>
+                        </div>
+                    </div>
+
+                    <!-- Action Button -->
+                    <button id="add-to-cart-btn" class="cta-button">ADD TO CART</button>
+
+                    <!-- Feedback Toast -->
+                    <div id="cart-toast" class="toast-msg" style="display: none;">✓ Added to cart!</div>
+                </div>
+
+                <footer class="store-footer" id="footer-text">
+                    All sales count towards Hanteo and Circle charts.
+                </footer>
+            </div>
+
         </div>
-
-        <!-- Main Product Grid -->
-        <main class="product-grid">
-            <!-- Left Column: Your Canva Graphic -->
-            <div class="product-image-col">
-                <img id="product-artwork" src="" alt="Product Mockup" class="main-mockup-img">
-            </div>
-
-            <!-- Right Column: Interactive Purchase Panel -->
-            <div class="product-info-col">
-                <h2 class="product-title" id="prod-title">Product Title</h2>
-                <p class="product-subtitle" id="prod-subtitle">Product Subtitle</p>
-                <div class="product-price" id="prod-price">$0.00</div>
-
-                <!-- Dynamic Selector Group -->
-                <div class="selector-group" id="selector-container"></div>
-
-                <!-- Action Button -->
-                <button id="add-to-cart-btn" class="cta-button">ADD TO CART</button>
-
-                <!-- Feedback Toast -->
-                <div id="cart-toast" class="toast-msg" style="display: none;">✓ Added to cart!</div>
-            </div>
-        </main>
-
-        <footer class="store-footer" id="footer-text">
-            All sales count towards Hanteo and Circle charts. Pre-order benefits are limited.
-        </footer>
     </div>
 
     <script src="script.js"></script>
