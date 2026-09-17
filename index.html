@@ -11,7 +11,7 @@
     <div class="store-container">
         <!-- Store Header -->
         <header class="store-header">
-            <h1 class="logo">K-RECORDS</h1>
+            <h1 class="logo" id="store-logo">K-RECORDS</h1>
             <nav class="store-nav">
                 <a href="#">Home</a>
                 <a href="#" class="active">Product</a>
@@ -20,55 +20,46 @@
             </nav>
         </header>
 
-        <!-- Condition Toggle for Testing (Remove or hide in production) -->
-        <div class="debug-banner" id="framing-banner">
-            <span id="banner-text">COLLECTION PROGRESS: 5/6 Versions Secured (83% Complete)</span>
+        <!-- Dynamic Framing / Progress Banner (Hidden in Control Mode) -->
+        <div class="debug-banner" id="framing-banner" style="display: none;">
+            <span id="banner-text"></span>
         </div>
 
         <!-- Main Product Grid -->
         <main class="product-grid">
-            <!-- Left Column: Visual Asset -->
+            <!-- Left Column: Your Clean Canva Graphic -->
             <div class="product-image-col">
-                <img src="assets/mockup-preview.jpg" alt="Album Mockup" class="main-mockup-img">
+                <img id="product-artwork" src="" alt="Product Mockup" class="main-mockup-img">
             </div>
 
             <!-- Right Column: Interactive Purchase Panel -->
             <div class="product-info-col">
-                <h2 class="product-title">DNE - 1st Mini Album</h2>
-                <p class="product-subtitle">Official Member Version | Limited Edition Set</p>
-                <div class="product-price">$25.99</div>
+                <h2 class="product-title" id="prod-title">Product Title</h2>
+                <p class="product-subtitle" id="prod-subtitle">Product Subtitle</p>
+                <div class="product-price" id="prod-price">$0.00</div>
 
-                <!-- Interactive Version Selector -->
-                <div class="selector-group">
-                    <label>SELECT MEMBER VERSION:</label>
-                    <div class="version-grid" id="version-grid">
-                        <button class="ver-btn secured" disabled>A ✓</button>
-                        <button class="ver-btn secured" disabled>B ✓</button>
-                        <button class="ver-btn secured" disabled>C ✓</button>
-                        <button class="ver-btn secured" disabled>D ✓</button>
-                        <button class="ver-btn secured" disabled>E ✓</button>
-                        <button class="ver-btn target active" data-ver="F">F (Missing)</button>
-                    </div>
+                <!-- Dynamic Selector Group (Versions for K-Pop, Steps for Skincare) -->
+                <div class="selector-group" id="selector-container">
+                    <!-- Injected via JavaScript based on condition -->
                 </div>
 
-                <!-- Quantity / Purchase Option -->
+                <!-- Purchase Option Dropdown -->
                 <div class="selector-group">
                     <label>PURCHASE OPTION:</label>
                     <select id="purchase-mode" class="dropdown-select">
-                        <option value="single">Complete Set: Buy Final Version F ($25.99)</option>
-                        <option value="bundle">Buy Full 6-Member Box Set ($155.94)</option>
+                        <option value="single">Single Item Purchase</option>
                     </select>
                 </div>
 
                 <!-- Action Button -->
-                <button id="add-to-cart-btn" class="cta-button">COMPLETE MY COLLECTION</button>
+                <button id="add-to-cart-btn" class="cta-button">ADD TO CART</button>
 
                 <!-- Feedback Toast -->
-                <div id="cart-toast" class="toast-msg" style="display: none;"></div>
+                <div id="cart-toast" class="toast-msg" style="display: none;">✓ Added to cart!</div>
             </div>
         </main>
 
-        <footer class="store-footer">
+        <footer class="store-footer" id="footer-text">
             All sales count towards Hanteo and Circle charts. Pre-order benefits are limited.
         </footer>
     </div>
