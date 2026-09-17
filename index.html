@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Product Page Mockup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="store-container">
+        <!-- Store Header -->
+        <header class="store-header">
+            <h1 class="logo">K-RECORDS</h1>
+            <nav class="store-nav">
+                <a href="#">Home</a>
+                <a href="#" class="active">Product</a>
+                <a href="#">Contact</a>
+                <a href="#">About</a>
+            </nav>
+        </header>
+
+        <!-- Condition Toggle for Testing (Remove or hide in production) -->
+        <div class="debug-banner" id="framing-banner">
+            <span id="banner-text">COLLECTION PROGRESS: 5/6 Versions Secured (83% Complete)</span>
+        </div>
+
+        <!-- Main Product Grid -->
+        <main class="product-grid">
+            <!-- Left Column: Visual Asset -->
+            <div class="product-image-col">
+                <img src="assets/mockup-preview.jpg" alt="Album Mockup" class="main-mockup-img">
+            </div>
+
+            <!-- Right Column: Interactive Purchase Panel -->
+            <div class="product-info-col">
+                <h2 class="product-title">DNE - 1st Mini Album</h2>
+                <p class="product-subtitle">Official Member Version | Limited Edition Set</p>
+                <div class="product-price">$25.99</div>
+
+                <!-- Interactive Version Selector -->
+                <div class="selector-group">
+                    <label>SELECT MEMBER VERSION:</label>
+                    <div class="version-grid" id="version-grid">
+                        <button class="ver-btn secured" disabled>A ✓</button>
+                        <button class="ver-btn secured" disabled>B ✓</button>
+                        <button class="ver-btn secured" disabled>C ✓</button>
+                        <button class="ver-btn secured" disabled>D ✓</button>
+                        <button class="ver-btn secured" disabled>E ✓</button>
+                        <button class="ver-btn target active" data-ver="F">F (Missing)</button>
+                    </div>
+                </div>
+
+                <!-- Quantity / Purchase Option -->
+                <div class="selector-group">
+                    <label>PURCHASE OPTION:</label>
+                    <select id="purchase-mode" class="dropdown-select">
+                        <option value="single">Complete Set: Buy Final Version F ($25.99)</option>
+                        <option value="bundle">Buy Full 6-Member Box Set ($155.94)</option>
+                    </select>
+                </div>
+
+                <!-- Action Button -->
+                <button id="add-to-cart-btn" class="cta-button">COMPLETE MY COLLECTION</button>
+
+                <!-- Feedback Toast -->
+                <div id="cart-toast" class="toast-msg" style="display: none;"></div>
+            </div>
+        </main>
+
+        <footer class="store-footer">
+            All sales count towards Hanteo and Circle charts. Pre-order benefits are limited.
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
