@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let cartItems = 0;
 
-    // Zoom functionality
+    // Zoom functionality for your complete Canva graphic
     zoomTrigger.addEventListener('click', () => {
         zoomedImg.src = artwork.src;
         zoomModal.style.display = 'flex';
@@ -71,11 +71,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (domain === 'skincare') {
         bodyTheme.className = "theme-skincare";
-        screenTheme.style.background = "#fffbf7"; // Very light skincare tint
+        screenTheme.style.background = "#fffbf7"; 
         headerTheme.style.background = "#f7f2ec";
 
         logo.innerText = "APHRODITE GLOW";
-        artwork.src = "https://univemanagement.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_GgCvohps1aluqA6"; // Skincare bottle link
+        // Restored original full-page Skincare graphic with side panels
+        artwork.src = "https://univemanagement.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_yWZy4n4v6gkVSHX"; 
         title.innerText = "Vitamin C Serum";
         subtitle.innerText = "Brightening facial serum | 30 ml";
         price.innerText = "€10.90";
@@ -100,11 +101,12 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
         // K-POP DOMAIN
         bodyTheme.className = "theme-kpop";
-        screenTheme.style.background = "#faf8fc"; // Very light lavender kpop tint
+        screenTheme.style.background = "#faf8fc"; 
         headerTheme.style.background = "#f4eff7";
 
         logo.innerText = "K-RECORDS";
-        artwork.src = "https://univemanagement.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_pgsCAymK0xORfXh"; // K-Pop album link
+        // Restored original full-page K-Pop graphic with photocard strip
+        artwork.src = "https://univemanagement.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4xBCFwpuRUQAzf4"; 
         title.innerText = "DNE - 1st Mini Album";
         subtitle.innerText = "Official Member Version | Limited Edition Set";
         price.innerText = "€25.99";
