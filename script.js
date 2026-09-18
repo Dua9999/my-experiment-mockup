@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
-    const domain = urlParams.get('domain') || 'kpop';       // 'kpop' or 'skincare'
-    const condition = urlParams.get('condition') || 'treatment'; // 'control' or 'treatment'
+    const domain = urlParams.get('domain') || 'kpop';       
+    const condition = urlParams.get('condition') || 'treatment'; 
 
     const logo = document.getElementById('store-logo');
     const banner = document.getElementById('framing-banner');
@@ -13,6 +13,20 @@ document.addEventListener("DOMContentLoaded", function() {
     const addBtn = document.getElementById('add-to-cart-btn');
     const toast = document.getElementById('cart-toast');
     const footer = document.getElementById('footer-text');
+    const accordionToggle = document.getElementById('accordion-toggle');
+    const accordionContent = document.getElementById('accordion-content');
+    const detailsText = document.getElementById('details-text');
+
+    // Accordion Toggle Behavior
+    accordionToggle.addEventListener('click', function() {
+        if (accordionContent.style.display === "none") {
+            accordionContent.style.display = "block";
+            accordionToggle.innerText = "▲ Hide Product Details & Info";
+        } else {
+            accordionContent.style.display = "none";
+            accordionToggle.innerText = "▼ View Product Details & Info";
+        }
+    });
 
     if (domain === 'skincare') {
         logo.innerText = "APHRODITE GLOW";
@@ -21,18 +35,20 @@ document.addEventListener("DOMContentLoaded", function() {
         subtitle.innerText = "Brightening facial serum | 30 ml";
         price.innerText = "€10.90";
         footer.innerText = "Dermatologist tested. Suitable for everyday skincare routine.";
+        
+        detailsText.innerHTML = "<strong>Ingredients:</strong> L-ascorbic acid, Hyaluronic acid, Botanical extracts.<br><strong>Directions:</strong> Apply 3-4 drops daily to clean skin before moisturizing. Avoid direct eye contact.";
 
         if (condition === 'control') {
             banner.style.display = 'none';
             addBtn.style.background = "#111111";
             addBtn.innerText = "ADD TO CART";
-            selectorContainer.innerHTML = `<label>PRODUCT FORMAT:</label><p style="font-size:11px; color:#555;">Standard 30ml dropper bottle.</p>`;
+            selectorContainer.innerHTML = `<label>PRODUCT FORMAT:</label><p style="font-size:10px; color:#555;">Standard 30ml dropper bottle.</p>`;
         } else {
             banner.style.display = 'block';
             banner.innerHTML = "COMPLETE YOUR ROUTINE: You already have 4 of 5 products. Add the serum to complete it.";
             addBtn.style.background = "#8e24aa";
             addBtn.innerText = "COMPLETE MY RITUAL";
-            selectorContainer.innerHTML = `<label>ROUTINE STATUS:</label><p style="font-size:11px; color:#4a148c; font-weight:bold;">Step 5 of 5 (1 product remaining)</p>`;
+            selectorContainer.innerHTML = `<label>ROUTINE STATUS:</label><p style="font-size:10px; color:#4a148c; font-weight:bold;">Step 5 of 5 (1 product remaining)</p>`;
         }
     } else {
         // K-POP DOMAIN
@@ -41,7 +57,9 @@ document.addEventListener("DOMContentLoaded", function() {
         title.innerText = "DNE - 1st Mini Album";
         subtitle.innerText = "Official Member Version | Limited Edition Set";
         price.innerText = "€25.99";
-        footer.innerText = "All sales count towards Hanteo and Circle charts. Pre-order benefits are limited.";
+        footer.innerText = "All sales count towards Hanteo and Circle charts.";
+        
+        detailsText.innerHTML = "<strong>Album Tracklist:</strong><br>01. Somebody New<br>02. One More Chance<br>03. Lost Dream<br>04. Island<br><br><strong>Inclusions:</strong> CD, Photobook (80p), Lyric Booklet, 1 Random Photocard.";
 
         if (condition === 'control') {
             banner.style.display = 'none';
@@ -49,15 +67,25 @@ document.addEventListener("DOMContentLoaded", function() {
             addBtn.innerText = "ADD TO CART";
             selectorContainer.innerHTML = `
                 <label>SELECT MEMBER VERSION:</label>
-                <div class="version-grid">
-                    <button class="ver-btn" style="border:1px solid #ccc; background:#f9f9f9;">Version A</button>
-                    <button class="ver-btn" style="border:1px solid #ccc; background:#f9f9f9;">Version B</button>
-                    <button class="ver-btn" style="border:1px solid #ccc; background:#f9f9f9;">Version C</button>
-                    <button class="ver-btn" style="border:1px solid #ccc; background:#f9f9f9;">Version D</button>
-                    <button class="ver-btn" style="border:1px solid #ccc; background:#f9f9f9;">Version E</button>
-                    <button class="ver-btn" style="border:2px solid #111; background:#e0e0e0; font-weight:bold;">Version F</button>
+                <div class="version-grid" id="kpop-versions">
+                    <button class="ver-btn" data-v="A">Version A</button>
+                    <button class="ver-btn" data-v="B">Version B</button>
+                    <button class="ver-btn" data-v="C">Version C</button>
+                    <button class="ver-btn" data-v="D">Version D</button>
+                    <button class="ver-btn" data-v="E">Version E</button>
+                    <button class="ver-btn selected" data-v="F">Version F</button>
                 </div>
             `;
+            // Make control versions clickable
+            setTimeout(() => {
+                document.querySelectorAll('#kpop-versions .ver-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        document.querySelectorAll('#kpop-versions .ver-btn').forEach(b => b.classList.remove('selected'));
+                        this.classList.add('selected');
+                    });
+                });
+            }, 100);
+
         } else {
             banner.style.display = 'block';
             banner.innerHTML = "COMPLETE YOUR COLLECTION: You already have 5 of 6 versions. Add Member F to complete it.";
