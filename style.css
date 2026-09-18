@@ -169,6 +169,17 @@ body.theme-kpop .progress-fill {
     font-size: 10px;
     color: #666;
     margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.product-rating {
+    color: #e65100;
+    font-weight: bold;
+}
+
+.trending-tag {
+    color: #b71c1c;
+    font-weight: bold;
 }
 
 .product-price {
