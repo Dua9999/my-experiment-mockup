@@ -75,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function() {
         logo.innerText = "APHRODITE GLOW";
         artwork.src = "https://univemanagement.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_yWZy4n4v6gkVSHX"; 
         title.innerText = "Vitamin C Serum";
-        // Skincare subtitle with realistic rating
         subtitle.innerHTML = "Brightening facial serum | 30 ml<br><span class='product-rating'>★★★★☆ 4.2 (248 reviews)</span>";
         price.innerText = "€10.90";
         footer.innerText = "Dermatologist tested. Suitable for everyday skincare routine.";
@@ -105,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function() {
         logo.innerText = "K-RECORDS";
         artwork.src = "https://univemanagement.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4xBCFwpuRUQAzf4"; 
         title.innerText = "DNE - 1st Mini Album";
-        // K-pop subtitle with clean Trending Item tag (no limited edition text)
         subtitle.innerHTML = "Official Member Version | CD, Photobook, Photocards<br><span class='trending-tag'>🔥 Trending Item</span>";
         price.innerText = "€25.99";
         footer.innerText = "All sales count towards Hanteo and Circle charts.";
