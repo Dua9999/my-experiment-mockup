@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     const domain = urlParams.get('domain') || 'kpop';       
-    const condition = urlParams.get('condition') || 'treatment'; 
+    
+    // Explicitly check for control parameter so it never misfires
+    const conditionParam = urlParams.get('condition');
+    const condition = (conditionParam === 'control') ? 'control' : 'treatment';
 
     const bodyTheme = document.getElementById('body-theme');
     const screenTheme = document.getElementById('phone-screen-theme');
