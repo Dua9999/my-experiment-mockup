@@ -13,7 +13,7 @@
         <div class="phone-notch"></div>
         <div class="phone-screen" id="phone-screen-theme">
             
-            <!-- Store Header with Live Interactive Cart -->
+            <!-- Store Header with Clean Counter -->
             <header class="store-header" id="header-theme">
                 <h1 class="logo" id="store-logo">K-RECORDS</h1>
                 <div class="header-cart" id="cart-trigger">
@@ -75,15 +75,12 @@
         <img id="zoomed-img" class="zoomed-image-content" src="" alt="Zoomed Product View">
     </div>
 
-    <!-- Interactive Cart & Checkout Modal with Remove Option -->
+    <!-- Simple Secure Checkout Confirmation Modal -->
     <div id="checkout-modal" class="modal" style="display: none;">
         <div class="modal-content">
-            <h3>Your Shopping Cart</h3>
-            <div id="cart-items-list" class="cart-list-container">
-                <!-- Dynamically populated items with remove buttons -->
-            </div>
-            <div id="cart-total-section" style="margin: 10px 0; font-weight: bold; font-size: 11px;"></div>
-            <button id="finalize-order" class="cta-button">PROCEED TO CHECKOUT</button>
+            <h3>Secure Checkout</h3>
+            <p id="checkout-summary-text" style="font-size:11px; color:#555; margin: 10px 0;">Review your selection before finalizing order.</p>
+            <button id="finalize-order" class="cta-button">PAY NOW</button>
             <button id="close-modal" class="close-btn">Return to Shop</button>
         </div>
     </div>
