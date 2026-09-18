@@ -6,15 +6,15 @@
     <title>Mobile Storefront Mockup</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="body-theme">
 
     <!-- Phone Frame Container -->
-    <div class="phone-frame">
+    <div class="phone-frame" id="phone-frame-theme">
         <div class="phone-notch"></div>
-        <div class="phone-screen">
+        <div class="phone-screen" id="phone-screen-theme">
             
             <!-- Store Header with Live Interactive Cart -->
-            <header class="store-header">
+            <header class="store-header" id="header-theme">
                 <h1 class="logo" id="store-logo">K-RECORDS</h1>
                 <div class="header-cart" id="cart-trigger">
                     🛒 Cart (<span id="cart-count">0</span>)
@@ -24,7 +24,6 @@
             <!-- Dynamic Framing / Progress Banner (Hidden in Control Mode) -->
             <div class="debug-banner" id="framing-banner" style="display: none;">
                 <span id="banner-text"></span>
-                <!-- Visual Progress Bar Element -->
                 <div class="progress-bar-container" id="visual-progress-bar">
                     <div class="progress-fill" id="progress-fill-bar"></div>
                 </div>
@@ -32,9 +31,10 @@
 
             <!-- Scrollable Mobile Content Area -->
             <div class="scroll-content">
-                <!-- Product Artwork (Larger size) -->
-                <div class="product-image-container">
+                <!-- Product Artwork with Zoom Trigger -->
+                <div class="product-image-container" id="zoom-trigger" title="Click to zoom image">
                     <img id="product-artwork" src="" alt="Product Mockup" class="main-mockup-img">
+                    <span class="zoom-hint">🔍 Tap to zoom</span>
                 </div>
 
                 <!-- Product Info & Purchase Panel -->
@@ -67,6 +67,12 @@
             </div>
 
         </div>
+    </div>
+
+    <!-- Image Zoom Lightbox Modal -->
+    <div id="zoom-modal" class="zoom-modal" style="display: none;">
+        <span id="close-zoom" class="close-zoom-btn">&times;</span>
+        <img id="zoomed-img" class="zoomed-image-content" src="" alt="Zoomed Product View">
     </div>
 
     <!-- Checkout Modal Simulation -->
