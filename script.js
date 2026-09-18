@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const domain = urlParams.get('domain') || 'kpop';       
     const condition = urlParams.get('condition') || 'treatment'; 
 
+    const bodyTheme = document.getElementById('body-theme');
+    const screenTheme = document.getElementById('phone-screen-theme');
+    const headerTheme = document.getElementById('header-theme');
     const logo = document.getElementById('store-logo');
     const banner = document.getElementById('framing-banner');
     const progressFill = document.getElementById('progress-fill-bar');
@@ -23,7 +26,25 @@ document.addEventListener("DOMContentLoaded", function() {
     const accordionContent = document.getElementById('accordion-content');
     const detailsText = document.getElementById('details-text');
 
+    // Zoom Modal Elements
+    const zoomTrigger = document.getElementById('zoom-trigger');
+    const zoomModal = document.getElementById('zoom-modal');
+    const zoomedImg = document.getElementById('zoomed-img');
+    const closeZoom = document.getElementById('close-zoom');
+
     let cartItems = 0;
+
+    // Zoom functionality
+    zoomTrigger.addEventListener('click', () => {
+        zoomedImg.src = artwork.src;
+        zoomModal.style.display = 'flex';
+    });
+    closeZoom.addEventListener('click', () => {
+        zoomModal.style.display = 'none';
+    });
+    zoomModal.addEventListener('click', (e) => {
+        if(e.target === zoomModal) zoomModal.style.display = 'none';
+    });
 
     // Accordion Toggle
     accordionToggle.addEventListener('click', function() {
@@ -49,8 +70,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     if (domain === 'skincare') {
+        bodyTheme.className = "theme-skincare";
+        screenTheme.style.background = "#fffbf7"; // Very light skincare tint
+        headerTheme.style.background = "#f7f2ec";
+
         logo.innerText = "APHRODITE GLOW";
-        artwork.src = "https://univemanagement.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_yWZy4n4v6gkVSHX";
+        artwork.src = "https://univemanagement.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_GgCvohps1aluqA6"; // Skincare bottle link
         title.innerText = "Vitamin C Serum";
         subtitle.innerText = "Brightening facial serum | 30 ml";
         price.innerText = "€10.90";
@@ -64,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
             addBtn.innerText = "ADD TO CART";
             selectorContainer.innerHTML = `<label>PRODUCT FORMAT:</label><p style="font-size:10px; color:#555;">Standard 30ml dropper bottle.</p>`;
         } else {
-            cartItems = 4; // Pre-filled to reflect 4 out of 5 already in the ritual
+            cartItems = 4; 
             banner.style.display = 'block';
             banner.innerHTML = "You're almost there. 4 of 5 products in your skincare ritual are already selected. Add this serum to complete your ritual.";
             progressFill.style.width = "80%"; 
@@ -74,8 +99,12 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     } else {
         // K-POP DOMAIN
+        bodyTheme.className = "theme-kpop";
+        screenTheme.style.background = "#faf8fc"; // Very light lavender kpop tint
+        headerTheme.style.background = "#f4eff7";
+
         logo.innerText = "K-RECORDS";
-        artwork.src = "https://univemanagement.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4xBCFwpuRUQAzf4";
+        artwork.src = "https://univemanagement.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_pgsCAymK0xORfXh"; // K-Pop album link
         title.innerText = "DNE - 1st Mini Album";
         subtitle.innerText = "Official Member Version | Limited Edition Set";
         price.innerText = "€25.99";
@@ -108,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 100);
 
         } else {
-            cartItems = 5; // Pre-filled to reflect 5 out of 6 versions already collected
+            cartItems = 5; 
             banner.style.display = 'block';
             banner.innerHTML = "Only one version remains. 5 of 6 versions have already been collected. Add the final version to complete the collection.";
             progressFill.style.width = "83.3%"; 
@@ -130,7 +159,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     cartCount.innerText = cartItems;
 
-    // Add to Cart action increments live cart counter to complete the set (5 or 6)
     addBtn.addEventListener('click', function(e) {
         e.preventDefault();
         cartItems++;
