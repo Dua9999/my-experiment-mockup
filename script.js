@@ -22,8 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const checkoutModal = document.getElementById('checkout-modal');
     const closeModal = document.getElementById('close-modal');
     const finalizeOrder = document.getElementById('finalize-order');
-    const cartItemsList = document.getElementById('cart-items-list');
-    const cartTotalSection = document.getElementById('cart-total-section');
+    const checkoutSummaryText = document.getElementById('checkout-summary-text');
     const accordionToggle = document.getElementById('accordion-toggle');
     const accordionContent = document.getElementById('accordion-content');
     const detailsText = document.getElementById('details-text');
@@ -33,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const zoomedImg = document.getElementById('zoomed-img');
     const closeZoom = document.getElementById('close-zoom');
 
-    let cart = []; // Array to hold cart items dynamically
+    let cartItems = 0;
 
     zoomTrigger.addEventListener('click', () => {
         zoomedImg.src = artwork.src;
@@ -56,43 +55,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Function to render cart contents and remove buttons
-    function updateCartDisplay() {
-        cartCount.innerText = cart.length;
-        cartItemsList.innerHTML = '';
-        
-        if (cart.length === 0) {
-            cartItemsList.innerHTML = '<p style="color:#777; text-align:center;">Your cart is empty.</p>';
-            cartTotalSection.innerText = 'Total: €0.00';
-            return;
-        }
-
-        let total = 0;
-        cart.forEach((item, index) => {
-            total += item.price;
-            const row = document.createElement('div');
-            row.className = 'cart-item-row';
-            row.innerHTML = `
-                <span>${item.name}</span>
-                <span>€${item.price.toFixed(2)} <button class="remove-item-btn" data-index="${index}">Remove</button></span>
-            `;
-            cartItemsList.appendChild(row);
-        });
-
-        cartTotalSection.innerText = `Total (${cart.length} items): €${total.toFixed(2)}`;
-
-        // Attach event listeners to remove buttons
-        document.querySelectorAll('.remove-item-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const idx = parseInt(this.getAttribute('data-index'));
-                cart.splice(idx, 1);
-                updateCartDisplay();
-            });
-        });
-    }
-
     cartTrigger.addEventListener('click', () => {
-        updateCartDisplay();
+        checkoutSummaryText.innerText = `You have ${cartItems} item(s) secured in your order. Review before finalizing.`;
         checkoutModal.style.display = 'flex';
     });
     closeModal.addEventListener('click', () => {
@@ -102,9 +66,6 @@ document.addEventListener("DOMContentLoaded", function() {
         alert("Order simulated successfully! Recorded for study data.");
         checkoutModal.style.display = 'none';
     });
-
-    let itemPrice = 10.90;
-    let itemName = "Vitamin C Serum (30ml)";
 
     if (domain === 'skincare') {
         bodyTheme.className = "theme-skincare";
@@ -116,25 +77,17 @@ document.addEventListener("DOMContentLoaded", function() {
         title.innerText = "Vitamin C Serum";
         subtitle.innerText = "Brightening facial serum | 30 ml";
         price.innerText = "€10.90";
-        itemPrice = 10.90;
-        itemName = "Vitamin C Serum";
         footer.innerText = "Dermatologist tested. Suitable for everyday skincare routine.";
         detailsText.innerHTML = "<strong>Ingredients:</strong> L-ascorbic acid, Hyaluronic acid, Botanical extracts.<br><strong>Directions:</strong> Apply 3-4 drops daily to clean skin before moisturizing.";
 
         if (condition === 'control') {
-            cart = []; // Empty cart for control
+            cartItems = 0;
             banner.style.display = 'none';
             addBtn.style.background = "#111111";
             addBtn.innerText = "ADD TO CART";
             selectorContainer.innerHTML = `<label>PRODUCT FORMAT:</label><p style="font-size:10px; color:#555;">Standard 30ml dropper bottle.</p>`;
         } else {
-            // Pre-fill 4 items representing the ritual already secured
-            cart = [
-                { name: "Cleanser", price: 12.00 },
-                { name: "Toner", price: 15.00 },
-                { name: "Eye Cream", price: 18.00 },
-                { name: "Moisturizer", price: 22.00 }
-            ];
+            cartItems = 4; // Skincare routine: Cleanser, Toner, Sunscreen, Moisturizer secured
             banner.style.display = 'block';
             banner.innerHTML = "You're almost there. 4 of 5 products in your skincare ritual are already selected. Add this serum to complete your ritual.";
             progressFill.style.width = "80%"; 
@@ -153,13 +106,11 @@ document.addEventListener("DOMContentLoaded", function() {
         title.innerText = "DNE - 1st Mini Album";
         subtitle.innerText = "Official Member Version | Limited Edition Set";
         price.innerText = "€25.99";
-        itemPrice = 25.99;
-        itemName = "DNE Mini Album (Version F)";
         footer.innerText = "All sales count towards Hanteo and Circle charts.";
         detailsText.innerHTML = "<strong>Album Tracklist:</strong><br>01. Somebody New<br>02. One More Chance<br>03. Lost Dream<br>04. Island<br><br><strong>Inclusions:</strong> CD, Photobook (80p), Lyric Booklet, 1 Random Photocard.";
 
         if (condition === 'control') {
-            cart = []; // Empty cart for control
+            cartItems = 0;
             banner.style.display = 'none';
             addBtn.style.background = "#111111";
             addBtn.innerText = "ADD TO CART";
@@ -184,14 +135,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 100);
 
         } else {
-            // Pre-fill 5 items representing versions A through E already collected
-            cart = [
-                { name: "Album - Version A", price: 25.99 },
-                { name: "Album - Version B", price: 25.99 },
-                { name: "Album - Version C", price: 25.99 },
-                { name: "Album - Version D", price: 25.99 },
-                { name: "Album - Version E", price: 25.99 }
-            ];
+            cartItems = 5; // Versions A through E uniformly secured
             banner.style.display = 'block';
             banner.innerHTML = "Only one version remains. 5 of 6 versions have already been collected. Add the final version to complete the collection.";
             progressFill.style.width = "83.3%"; 
@@ -211,13 +155,12 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    cartCount.innerText = cart.length;
+    cartCount.innerText = cartItems;
 
-    // Add to cart pushes the item into the live cart array
     addBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        cart.push({ name: itemName, price: itemPrice });
-        cartCount.innerText = cart.length;
+        cartItems++;
+        cartCount.innerText = cartItems;
         toast.innerText = `✓ Successfully added to cart!`;
         toast.style.display = 'block';
         setTimeout(() => toast.style.display = 'none', 2500);
