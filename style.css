@@ -1,6 +1,5 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f0f2f5;
     color: #222;
     margin: 0;
     padding: 20px 0;
@@ -8,6 +7,16 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    transition: background-color 0.3s ease;
+}
+
+/* Theme Background Classes */
+body.theme-skincare {
+    background-color: #f7f5f2; /* Soft warm neutral */
+}
+
+body.theme-kpop {
+    background-color: #f4f1f7; /* Soft cool lavender neutral */
 }
 
 .phone-frame {
@@ -39,7 +48,6 @@ body {
 .phone-screen {
     width: 100%;
     height: 100%;
-    background: #ffffff;
     display: flex;
     flex-direction: column;
     padding-top: 25px;
@@ -52,7 +60,6 @@ body {
     align-items: center;
     border-bottom: 1px solid #eaeaea;
     padding: 10px 15px;
-    background: #fff;
 }
 
 .logo {
@@ -65,7 +72,7 @@ body {
 .header-cart {
     font-size: 11px;
     font-weight: bold;
-    background: #f3e5f5;
+    background: rgba(142, 36, 170, 0.1);
     color: #4a148c;
     padding: 4px 8px;
     border-radius: 12px;
@@ -73,8 +80,8 @@ body {
 }
 
 .debug-banner {
-    background: #f3e5f5;
-    border-bottom: 1px solid #e1bee7;
+    background: rgba(142, 36, 170, 0.08);
+    border-bottom: 1px solid rgba(142, 36, 170, 0.2);
     padding: 8px 12px;
     font-size: 10px;
     text-align: center;
@@ -82,11 +89,10 @@ body {
     font-weight: bold;
 }
 
-/* Visual Progress Bar Styling */
 .progress-bar-container {
     width: 100%;
-    height: 6px;
-    background: #e0e0e0;
+    height: 5px;
+    background: rgba(0,0,0,0.08);
     border-radius: 3px;
     margin-top: 6px;
     overflow: hidden;
@@ -109,9 +115,18 @@ body {
 .product-image-container {
     text-align: center;
     margin-bottom: 12px;
+    position: relative;
+    cursor: pointer;
 }
 
-/* Enriched, larger image sizing for mobile view */
+.zoom-hint {
+    display: block;
+    font-size: 9px;
+    color: #777;
+    margin-top: 4px;
+    font-style: italic;
+}
+
 .main-mockup-img {
     max-width: 100%;
     max-height: 290px;
@@ -119,7 +134,12 @@ body {
     height: auto;
     object-fit: contain;
     border-radius: 6px;
-    border: 1px solid #f0f0f0;
+    border: 1px solid #eaeaea;
+    transition: transform 0.2s ease;
+}
+
+.main-mockup-img:hover {
+    transform: scale(1.02);
 }
 
 .product-title {
@@ -195,6 +215,7 @@ body {
     border: 1px solid #e0e0e0;
     border-radius: 4px;
     overflow: hidden;
+    background: #ffffff;
 }
 
 .accordion-btn {
@@ -252,7 +273,34 @@ body {
     padding-top: 8px;
 }
 
-/* Modal Popup for Checkout simulation */
+/* Zoom Lightbox Modal */
+.zoom-modal {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 300;
+}
+
+.zoomed-image-content {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 6px;
+    object-fit: contain;
+}
+
+.close-zoom-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Checkout Modal */
 .modal {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
