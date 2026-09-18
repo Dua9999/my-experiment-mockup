@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (domain === 'skincare') {
         logo.innerText = "APHRODITE GLOW";
-        artwork.src = "https://univemanagement.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_HLnEaeAhgqayhWU";
+        artwork.src = "https://univemanagement.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_yWZy4n4v6gkVSHX";
         title.innerText = "Vitamin C Serum";
         subtitle.innerText = "Brightening facial serum | 30 ml";
         price.innerText = "€10.90";
