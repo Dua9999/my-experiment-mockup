@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const accordionContent = document.getElementById('accordion-content');
     const detailsText = document.getElementById('details-text');
 
-    // Zoom Modal Elements
     const zoomTrigger = document.getElementById('zoom-trigger');
     const zoomModal = document.getElementById('zoom-modal');
     const zoomedImg = document.getElementById('zoomed-img');
@@ -34,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let cartItems = 0;
 
-    // Zoom functionality for your complete Canva graphic
     zoomTrigger.addEventListener('click', () => {
         zoomedImg.src = artwork.src;
         zoomModal.style.display = 'flex';
@@ -46,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function() {
         if(e.target === zoomModal) zoomModal.style.display = 'none';
     });
 
-    // Accordion Toggle
     accordionToggle.addEventListener('click', function() {
         if (accordionContent.style.display === "none") {
             accordionContent.style.display = "block";
@@ -57,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Cart Modal Trigger
     cartTrigger.addEventListener('click', () => {
         checkoutModal.style.display = 'flex';
     });
@@ -70,7 +66,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     if (domain === 'skincare') {
-        // Skincare Theme: Soft Luxury Cream Tint
         bodyTheme.className = "theme-skincare";
         screenTheme.style.background = "#fffbf7"; 
         headerTheme.style.background = "#f7f2ec";
@@ -94,12 +89,12 @@ document.addEventListener("DOMContentLoaded", function() {
             banner.style.display = 'block';
             banner.innerHTML = "You're almost there. 4 of 5 products in your skincare ritual are already selected. Add this serum to complete your ritual.";
             progressFill.style.width = "80%"; 
-            addBtn.style.background = "#8e24aa";
+            addBtn.style.background = "#5c4033"; // Bronze
             addBtn.innerText = "COMPLETE MY RITUAL";
-            selectorContainer.innerHTML = `<label>ROUTINE STATUS:</label><p style="font-size:10px; color:#4a148c; font-weight:bold;">Step 5 of 5 (1 product remaining)</p>`;
+            selectorContainer.innerHTML = `<label>ROUTINE STATUS:</label><p class="status-highlight">Step 5 of 5 (1 product remaining)</p>`;
         }
     } else {
-        // K-Pop Theme: Clean, Modern Weverse/Ktown4u Style Tint
+        // K-Pop Domain
         bodyTheme.className = "theme-kpop";
         screenTheme.style.background = "#faf9fc"; 
         headerTheme.style.background = "#f3eff8";
@@ -142,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function() {
             banner.style.display = 'block';
             banner.innerHTML = "Only one version remains. 5 of 6 versions have already been collected. Add the final version to complete the collection.";
             progressFill.style.width = "83.3%"; 
-            addBtn.style.background = "#8e24aa";
+            addBtn.style.background = "#8e24aa"; // Purple
             addBtn.innerText = "COMPLETE MY COLLECTION";
             selectorContainer.innerHTML = `
                 <label>COLLECTION STATUS (5/6 SECURED):</label>
