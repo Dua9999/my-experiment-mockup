@@ -13,19 +13,26 @@
         <div class="phone-notch"></div>
         <div class="phone-screen">
             
-            <!-- Store Header -->
+            <!-- Store Header with Live Interactive Cart -->
             <header class="store-header">
                 <h1 class="logo" id="store-logo">K-RECORDS</h1>
+                <div class="header-cart" id="cart-trigger">
+                    🛒 Cart (<span id="cart-count">0</span>)
+                </div>
             </header>
 
             <!-- Dynamic Framing / Progress Banner (Hidden in Control Mode) -->
             <div class="debug-banner" id="framing-banner" style="display: none;">
                 <span id="banner-text"></span>
+                <!-- Visual Progress Bar Element -->
+                <div class="progress-bar-container" id="visual-progress-bar">
+                    <div class="progress-fill" id="progress-fill-bar"></div>
+                </div>
             </div>
 
             <!-- Scrollable Mobile Content Area -->
             <div class="scroll-content">
-                <!-- Product Artwork -->
+                <!-- Product Artwork (Larger size) -->
                 <div class="product-image-container">
                     <img id="product-artwork" src="" alt="Product Mockup" class="main-mockup-img">
                 </div>
@@ -36,10 +43,10 @@
                     <p class="product-subtitle" id="prod-subtitle">Product Subtitle</p>
                     <div class="product-price" id="prod-price">€0.00</div>
 
-                    <!-- Dynamic Selector Group (Versions / Routine Status) -->
+                    <!-- Dynamic Selector Group -->
                     <div class="selector-group" id="selector-container"></div>
 
-                    <!-- Interactive Accordion for Product Details / Tracklist -->
+                    <!-- Interactive Accordion for Product Details -->
                     <div class="details-accordion-container">
                         <button id="accordion-toggle" class="accordion-btn">▼ View Product Details & Info</button>
                         <div id="accordion-content" class="accordion-panel" style="display: none;">
@@ -59,6 +66,16 @@
                 </footer>
             </div>
 
+        </div>
+    </div>
+
+    <!-- Checkout Modal Simulation -->
+    <div id="checkout-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Secure Checkout</h3>
+            <p>Review your selection before finalizing order.</p>
+            <button id="finalize-order" class="cta-button">PAY NOW</button>
+            <button id="close-modal" class="close-btn">Return to Shop</button>
         </div>
     </div>
 
