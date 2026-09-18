@@ -75,7 +75,8 @@ document.addEventListener("DOMContentLoaded", function() {
         logo.innerText = "APHRODITE GLOW";
         artwork.src = "https://univemanagement.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_yWZy4n4v6gkVSHX"; 
         title.innerText = "Vitamin C Serum";
-        subtitle.innerText = "Brightening facial serum | 30 ml";
+        // Skincare subtitle with realistic rating
+        subtitle.innerHTML = "Brightening facial serum | 30 ml<br><span class='product-rating'>★★★★☆ 4.2 (248 reviews)</span>";
         price.innerText = "€10.90";
         footer.innerText = "Dermatologist tested. Suitable for everyday skincare routine.";
         detailsText.innerHTML = "<strong>Ingredients:</strong> L-ascorbic acid, Hyaluronic acid, Botanical extracts.<br><strong>Directions:</strong> Apply 3-4 drops daily to clean skin before moisturizing.";
@@ -87,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
             addBtn.innerText = "ADD TO CART";
             selectorContainer.innerHTML = `<label>PRODUCT FORMAT:</label><p style="font-size:10px; color:#555;">Standard 30ml dropper bottle.</p>`;
         } else {
-            cartItems = 4; // Skincare routine: Cleanser, Toner, Sunscreen, Moisturizer secured
+            cartItems = 4; 
             banner.style.display = 'block';
             banner.innerHTML = "You're almost there. 4 of 5 products in your skincare ritual are already selected. Add this serum to complete your ritual.";
             progressFill.style.width = "80%"; 
@@ -104,7 +105,8 @@ document.addEventListener("DOMContentLoaded", function() {
         logo.innerText = "K-RECORDS";
         artwork.src = "https://univemanagement.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4xBCFwpuRUQAzf4"; 
         title.innerText = "DNE - 1st Mini Album";
-        subtitle.innerText = "Official Member Version | Limited Edition Set";
+        // K-pop subtitle with clean Trending Item tag (no limited edition text)
+        subtitle.innerHTML = "Official Member Version | CD, Photobook, Photocards<br><span class='trending-tag'>🔥 Trending Item</span>";
         price.innerText = "€25.99";
         footer.innerText = "All sales count towards Hanteo and Circle charts.";
         detailsText.innerHTML = "<strong>Album Tracklist:</strong><br>01. Somebody New<br>02. One More Chance<br>03. Lost Dream<br>04. Island<br><br><strong>Inclusions:</strong> CD, Photobook (80p), Lyric Booklet, 1 Random Photocard.";
@@ -135,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 100);
 
         } else {
-            cartItems = 5; // Versions A through E uniformly secured
+            cartItems = 5; 
             banner.style.display = 'block';
             banner.innerHTML = "Only one version remains. 5 of 6 versions have already been collected. Add the final version to complete the collection.";
             progressFill.style.width = "83.3%"; 
