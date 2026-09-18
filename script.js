@@ -58,14 +58,16 @@ document.addEventListener("DOMContentLoaded", function() {
         detailsText.innerHTML = "<strong>Ingredients:</strong> L-ascorbic acid, Hyaluronic acid, Botanical extracts.<br><strong>Directions:</strong> Apply 3-4 drops daily to clean skin before moisturizing.";
 
         if (condition === 'control') {
+            cartItems = 0;
             banner.style.display = 'none';
             addBtn.style.background = "#111111";
             addBtn.innerText = "ADD TO CART";
             selectorContainer.innerHTML = `<label>PRODUCT FORMAT:</label><p style="font-size:10px; color:#555;">Standard 30ml dropper bottle.</p>`;
         } else {
+            cartItems = 4; // Pre-filled to reflect 4 out of 5 already in the ritual
             banner.style.display = 'block';
-            banner.innerHTML = "COMPLETE YOUR ROUTINE: You already have 4 of 5 products. Add the serum to complete it.";
-            progressFill.style.width = "80%"; // 4 of 5 complete
+            banner.innerHTML = "You're almost there. 4 of 5 products in your skincare ritual are already selected. Add this serum to complete your ritual.";
+            progressFill.style.width = "80%"; 
             addBtn.style.background = "#8e24aa";
             addBtn.innerText = "COMPLETE MY RITUAL";
             selectorContainer.innerHTML = `<label>ROUTINE STATUS:</label><p style="font-size:10px; color:#4a148c; font-weight:bold;">Step 5 of 5 (1 product remaining)</p>`;
@@ -81,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function() {
         detailsText.innerHTML = "<strong>Album Tracklist:</strong><br>01. Somebody New<br>02. One More Chance<br>03. Lost Dream<br>04. Island<br><br><strong>Inclusions:</strong> CD, Photobook (80p), Lyric Booklet, 1 Random Photocard.";
 
         if (condition === 'control') {
+            cartItems = 0;
             banner.style.display = 'none';
             addBtn.style.background = "#111111";
             addBtn.innerText = "ADD TO CART";
@@ -105,9 +108,10 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 100);
 
         } else {
+            cartItems = 5; // Pre-filled to reflect 5 out of 6 versions already collected
             banner.style.display = 'block';
-            banner.innerHTML = "COMPLETE YOUR COLLECTION: You already have 5 of 6 versions. Add Member F to complete it.";
-            progressFill.style.width = "83.3%"; // 5 of 6 complete
+            banner.innerHTML = "Only one version remains. 5 of 6 versions have already been collected. Add the final version to complete the collection.";
+            progressFill.style.width = "83.3%"; 
             addBtn.style.background = "#8e24aa";
             addBtn.innerText = "COMPLETE MY COLLECTION";
             selectorContainer.innerHTML = `
@@ -124,12 +128,14 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Add to Cart action increments live cart counter
+    cartCount.innerText = cartItems;
+
+    // Add to Cart action increments live cart counter to complete the set (5 or 6)
     addBtn.addEventListener('click', function(e) {
         e.preventDefault();
         cartItems++;
         cartCount.innerText = cartItems;
-        toast.innerText = `✓ Added to cart! (Cart items: ${cartItems})`;
+        toast.innerText = `✓ Successfully added to cart! (Set Complete)`;
         toast.style.display = 'block';
         setTimeout(() => toast.style.display = 'none', 2500);
     });
