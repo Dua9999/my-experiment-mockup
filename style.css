@@ -10,13 +10,12 @@ body {
     transition: background-color 0.3s ease;
 }
 
-/* Theme Background Classes */
 body.theme-skincare {
-    background-color: #f7f5f2; /* Soft warm neutral */
+    background-color: #f7f5f2; 
 }
 
 body.theme-kpop {
-    background-color: #f4f1f7; /* Soft cool lavender neutral */
+    background-color: #f4f1f7; 
 }
 
 .phone-frame {
@@ -72,20 +71,30 @@ body.theme-kpop {
 .header-cart {
     font-size: 11px;
     font-weight: bold;
-    background: rgba(142, 36, 170, 0.1);
-    color: #4a148c;
     padding: 4px 8px;
     border-radius: 12px;
     cursor: pointer;
 }
 
-.debug-banner {
-    background: rgba(142, 36, 170, 0.08);
+/* Domain-Specific Cart Badge & Banner Colors */
+body.theme-skincare .header-cart, 
+body.theme-skincare .debug-banner {
+    background: #f4ebe1;
+    color: #5c4033; /* Warm bronze */
+    border-bottom: 1px solid #e6d5c3;
+}
+
+body.theme-kpop .header-cart, 
+body.theme-kpop .debug-banner {
+    background: rgba(142, 36, 170, 0.1);
+    color: #4a148c; /* Purple */
     border-bottom: 1px solid rgba(142, 36, 170, 0.2);
+}
+
+.debug-banner {
     padding: 8px 12px;
     font-size: 10px;
     text-align: center;
-    color: #4a148c;
     font-weight: bold;
 }
 
@@ -98,11 +107,13 @@ body.theme-kpop {
     overflow: hidden;
 }
 
-.progress-fill {
-    height: 100%;
-    background: #8e24aa;
-    width: 0%;
-    transition: width 0.4s ease;
+/* Domain-Specific Progress Bar Fill */
+body.theme-skincare .progress-fill {
+    background: #8c6239; /* Bronze */
+}
+
+body.theme-kpop .progress-fill {
+    background: #8e24aa; /* Purple */
 }
 
 .scroll-content {
@@ -189,7 +200,17 @@ body.theme-kpop {
     background: #fafafa;
 }
 
-.ver-btn.selected {
+/* Domain-Specific Selection/Target Button Styling */
+body.theme-skincare .ver-btn.target,
+body.theme-skincare .ver-btn.selected {
+    border: 2px solid #8c6239;
+    background: #f4ebe1;
+    color: #5c4033;
+    font-weight: bold;
+}
+
+body.theme-kpop .ver-btn.target,
+body.theme-kpop .ver-btn.selected {
     border: 2px solid #8e24aa;
     background: #f3e5f5;
     color: #4a148c;
@@ -201,13 +222,6 @@ body.theme-kpop {
     border: 1px solid #ddd;
     opacity: 0.6;
     cursor: not-allowed;
-}
-
-.ver-btn.target {
-    border: 2px solid #8e24aa;
-    background: #f3e5f5;
-    color: #4a148c;
-    font-weight: bold;
 }
 
 .details-accordion-container {
@@ -241,7 +255,6 @@ body.theme-kpop {
 
 .cta-button {
     width: 100%;
-    background: #111;
     color: #fff;
     border: none;
     padding: 11px;
@@ -250,6 +263,18 @@ body.theme-kpop {
     cursor: pointer;
     border-radius: 4px;
     letter-spacing: 0.5px;
+}
+
+/* Domain-Specific Call-To-Action Button Colors */
+body.theme-skincare .cta-button {
+    background: #5c4033; /* Luxury bronze for treatment */
+}
+body.theme-skincare #add-to-cart-btn[style*="background: #111111"] {
+    background: #111111 !important; /* Keep control button clean black */
+}
+
+body.theme-kpop .cta-button {
+    background: #8e24aa; /* Purple for treatment */
 }
 
 .toast-msg {
