@@ -70,12 +70,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     if (domain === 'skincare') {
+        // Skincare Theme: Soft Luxury Cream Tint
         bodyTheme.className = "theme-skincare";
         screenTheme.style.background = "#fffbf7"; 
         headerTheme.style.background = "#f7f2ec";
 
         logo.innerText = "APHRODITE GLOW";
-        // Restored original full-page Skincare graphic with side panels
         artwork.src = "https://univemanagement.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_yWZy4n4v6gkVSHX"; 
         title.innerText = "Vitamin C Serum";
         subtitle.innerText = "Brightening facial serum | 30 ml";
@@ -99,13 +99,12 @@ document.addEventListener("DOMContentLoaded", function() {
             selectorContainer.innerHTML = `<label>ROUTINE STATUS:</label><p style="font-size:10px; color:#4a148c; font-weight:bold;">Step 5 of 5 (1 product remaining)</p>`;
         }
     } else {
-        // K-POP DOMAIN
+        // K-Pop Theme: Clean, Modern Weverse/Ktown4u Style Tint
         bodyTheme.className = "theme-kpop";
-        screenTheme.style.background = "#faf8fc"; 
-        headerTheme.style.background = "#f4eff7";
+        screenTheme.style.background = "#faf9fc"; 
+        headerTheme.style.background = "#f3eff8";
 
         logo.innerText = "K-RECORDS";
-        // Restored original full-page K-Pop graphic with photocard strip
         artwork.src = "https://univemanagement.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4xBCFwpuRUQAzf4"; 
         title.innerText = "DNE - 1st Mini Album";
         subtitle.innerText = "Official Member Version | Limited Edition Set";
