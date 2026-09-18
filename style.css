@@ -12,12 +12,12 @@ body {
 
 body.theme-skincare {
     background-color: #f7f5f2; 
-    letter-spacing: 0.2px; /* The Ordinary / Sephora minimalist feel */
+    letter-spacing: 0.2px; 
 }
 
 body.theme-kpop {
     background-color: #f4f1f7; 
-    letter-spacing: 0.5px; /* Weverse clean retail feel */
+    letter-spacing: 0.5px; 
 }
 
 .phone-frame {
@@ -71,7 +71,7 @@ body.theme-kpop {
 }
 
 body.theme-skincare .logo {
-    font-weight: 500; /* Clean clinical luxury look */
+    font-weight: 500; 
     letter-spacing: 3px;
 }
 
@@ -115,11 +115,11 @@ body.theme-kpop .debug-banner {
 }
 
 body.theme-skincare .progress-fill {
-    background: #5c4033; /* Bronze */
+    background: #5c4033; 
 }
 
 body.theme-kpop .progress-fill {
-    background: #8e24aa; /* Purple */
+    background: #8e24aa; 
 }
 
 .scroll-content {
@@ -190,7 +190,6 @@ body.theme-kpop .progress-fill {
     color: #444;
 }
 
-/* Status text matching domain colors cleanly */
 .status-highlight {
     font-size: 10px;
     font-weight: bold;
@@ -283,14 +282,14 @@ body.theme-kpop .ver-btn.selected {
 }
 
 body.theme-skincare .cta-button {
-    background: #5c4033; /* Luxury Bronze */
+    background: #5c4033; 
 }
 body.theme-skincare #add-to-cart-btn[style*="background: #111111"] {
     background: #111111 !important; 
 }
 
 body.theme-kpop .cta-button {
-    background: #8e24aa; /* Purple */
+    background: #8e24aa; 
 }
 
 .toast-msg {
@@ -352,10 +351,38 @@ body.theme-kpop .cta-button {
 
 .modal-content {
     background: #fff;
-    padding: 20px;
+    padding: 15px;
     border-radius: 8px;
-    width: 80%;
+    width: 85%;
     text-align: center;
+}
+
+.cart-list-container {
+    max-height: 140px;
+    overflow-y: auto;
+    text-align: left;
+    margin: 10px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 6px 0;
+    font-size: 10px;
+}
+
+.cart-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.remove-item-btn {
+    background: #ff5252;
+    color: white;
+    border: none;
+    padding: 2px 6px;
+    font-size: 9px;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
 .close-btn {
