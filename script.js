@@ -2,9 +2,24 @@ document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     const domain = urlParams.get('domain') || 'kpop';       
     
-    // Explicitly check for control parameter so it never misfires
     const conditionParam = urlParams.get('condition');
     const condition = (conditionParam === 'control') ? 'control' : 'treatment';
+
+    // Helper function to safely send events to Qualtrics parent page
+    function sendTrackingEvent(eventName, eventValue = "") {
+        const payload = {
+            source: "dua_experiment",
+            event: eventName,
+            domain: domain,
+            condition: condition,
+            value: eventValue,
+            timestamp: Date.now()
+        };
+        window.parent.postMessage(payload, "*");
+    }
+
+    // Trigger initial load event
+    sendTrackingEvent("page_loaded");
 
     const bodyTheme = document.getElementById('body-theme');
     const screenTheme = document.getElementById('phone-screen-theme');
@@ -36,14 +51,18 @@ document.addEventListener("DOMContentLoaded", function() {
     const closeZoom = document.getElementById('close-zoom');
 
     let cartItems = 0;
+    let selectedVersion = domain === 'kpop' ? 'F' : 'Standard';
 
     zoomTrigger.addEventListener('click', () => {
         zoomedImg.src = artwork.src;
         zoomModal.style.display = 'flex';
+        sendTrackingEvent("lightbox_opened");
     });
+    
     closeZoom.addEventListener('click', () => {
         zoomModal.style.display = 'none';
     });
+    
     zoomModal.addEventListener('click', (e) => {
         if(e.target === zoomModal) zoomModal.style.display = 'none';
     });
@@ -52,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (accordionContent.style.display === "none") {
             accordionContent.style.display = "block";
             accordionToggle.innerText = "▲ Hide Product Details & Info";
+            sendTrackingEvent("details_opened");
         } else {
             accordionContent.style.display = "none";
             accordionToggle.innerText = "▼ View Product Details & Info";
@@ -61,11 +81,15 @@ document.addEventListener("DOMContentLoaded", function() {
     cartTrigger.addEventListener('click', () => {
         checkoutSummaryText.innerText = `You have ${cartItems} item(s) secured in your order. Review before finalizing.`;
         checkoutModal.style.display = 'flex';
+        sendTrackingEvent("checkout_modal_opened", String(cartItems));
     });
+
     closeModal.addEventListener('click', () => {
         checkoutModal.style.display = 'none';
     });
+
     finalizeOrder.addEventListener('click', () => {
+        sendTrackingEvent("order_finalized", String(cartItems));
         alert("Order simulated successfully! Recorded for study data.");
         checkoutModal.style.display = 'none';
     });
@@ -78,7 +102,8 @@ document.addEventListener("DOMContentLoaded", function() {
         logo.innerText = "APHRODITE GLOW";
         artwork.src = "https://univemanagement.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_yWZy4n4v6gkVSHX"; 
         title.innerText = "Vitamin C Serum";
-        subtitle.innerHTML = "Brightening facial serum | 30 ml<br><span class='product-rating'>★★★★☆ 4.2 (248 reviews)</span>";
+        // Cleaned of review counts per audit
+        subtitle.innerHTML = "Brightening facial serum | 30 ml";
         price.innerText = "€10.90";
         footer.innerText = "Dermatologist tested. Suitable for everyday skincare routine.";
         detailsText.innerHTML = "<strong>Ingredients:</strong> L-ascorbic acid, Hyaluronic acid, Botanical extracts.<br><strong>Directions:</strong> Apply 3-4 drops daily to clean skin before moisturizing.";
@@ -107,7 +132,8 @@ document.addEventListener("DOMContentLoaded", function() {
         logo.innerText = "K-RECORDS";
         artwork.src = "https://univemanagement.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_4xBCFwpuRUQAzf4"; 
         title.innerText = "DNE - 1st Mini Album";
-        subtitle.innerHTML = "Official Member Version | CD, Photobook, Photocards<br><span class='trending-tag'>🔥 Trending Item</span>";
+        // Cleaned of trending tags per audit
+        subtitle.innerHTML = "Official Member Version | CD, Photobook, Photocards";
         price.innerText = "€25.99";
         footer.innerText = "All sales count towards Hanteo and Circle charts.";
         detailsText.innerHTML = "<strong>Album Tracklist:</strong><br>01. Somebody New<br>02. One More Chance<br>03. Lost Dream<br>04. Island<br><br><strong>Inclusions:</strong> CD, Photobook (80p), Lyric Booklet, 1 Random Photocard.";
@@ -133,6 +159,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     btn.addEventListener('click', function() {
                         document.querySelectorAll('#kpop-versions .ver-btn').forEach(b => b.classList.remove('selected'));
                         this.classList.add('selected');
+                        selectedVersion = this.getAttribute('data-v');
+                        sendTrackingEvent("version_selected", selectedVersion);
                     });
                 });
             }, 100);
@@ -155,6 +183,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <button class="ver-btn target">F (Missing)</button>
                 </div>
             `;
+            selectedVersion = 'F';
         }
     }
 
@@ -167,5 +196,7 @@ document.addEventListener("DOMContentLoaded", function() {
         toast.innerText = `✓ Successfully added to cart!`;
         toast.style.display = 'block';
         setTimeout(() => toast.style.display = 'none', 2500);
+
+        sendTrackingEvent("add_to_cart", selectedVersion);
     });
 });
